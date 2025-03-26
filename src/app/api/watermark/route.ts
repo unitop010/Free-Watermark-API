@@ -47,20 +47,22 @@ export async function GET(request: NextRequest) {
 
     let finalMainImage = sharp(mainImageBuffer);
     let finalMarkImage = sharp(markImageBuffer);
-    let finalWidth = mainWidth!;
-    let finalHeight = mainHeight!;
 
-    if (markRatio < 1) {
-      // Scale up the main image when markRatio < 1
-      finalWidth = Math.round(mainWidth! / markRatio);
-      finalHeight = Math.round(mainHeight! / markRatio);
-      
-      finalMainImage = finalMainImage.resize(finalWidth, finalHeight);
-    } else {
-      // Scale down the watermark when markRatio > 1
-      const markWidth = Math.round(mainWidth! / markRatio);
-      const markHeight = Math.round(mainHeight! / markRatio);
-      finalMarkImage = finalMarkImage.resize(markWidth, markHeight);
+    // Calculate watermark dimensions based on markRatio
+    const markWidth = Math.round(mainWidth! * markRatio);
+    const markHeight = Math.round(mainHeight! * markRatio);
+
+    // Resize watermark to the calculated size
+    finalMarkImage = finalMarkImage.resize(markWidth, markHeight);
+
+    // If watermark is larger than main image, crop it to main image size
+    if (markWidth > mainWidth! || markHeight > mainHeight!) {
+      finalMarkImage = finalMarkImage.extract({
+        left: 0,
+        top: 0,
+        width: mainWidth!,
+        height: mainHeight!
+      });
     }
 
     // Calculate position
@@ -73,21 +75,21 @@ export async function GET(request: NextRequest) {
         top = 0;
         break;
       case 'top-right':
-        left = finalWidth - (markRatio < 1 ? mainWidth! : Math.round(mainWidth! / markRatio));
+        left = mainWidth! - mainWidth!;
         top = 0;
         break;
       case 'bottom-left':
         left = 0;
-        top = finalHeight - (markRatio < 1 ? mainHeight! : Math.round(mainHeight! / markRatio));
+        top = mainHeight! - mainHeight!;
         break;
       case 'bottom-right':
-        left = finalWidth - (markRatio < 1 ? mainWidth! : Math.round(mainWidth! / markRatio));
-        top = finalHeight - (markRatio < 1 ? mainHeight! : Math.round(mainHeight! / markRatio));
+        left = mainWidth! - mainWidth!;
+        top = mainHeight! - mainHeight!;
         break;
       case 'center':
       default:
-        left = Math.round((finalWidth - (markRatio < 1 ? mainWidth! : Math.round(mainWidth! / markRatio))) / 2);
-        top = Math.round((finalHeight - (markRatio < 1 ? mainHeight! : Math.round(mainHeight! / markRatio))) / 2);
+        left = Math.round((mainWidth! - mainWidth!) / 2);
+        top = Math.round((mainHeight! - mainHeight!) / 2);
     }
 
     // Composite the images

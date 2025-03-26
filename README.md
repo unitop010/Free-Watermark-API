@@ -35,7 +35,7 @@ The API endpoint accepts the following query parameters:
 ### Example URL
 
 ```
-http://localhost:3000/api/watermark?mainImageUrl=https://example.com/image.jpg&markImageUrl=https://example.com/watermark.png&markRatio=2&position=center
+http://localhost:3000/api/watermark?mainImageUrl=https://example.com/image.jpg&markImageUrl=https://example.com/watermark.png&markRatio=1&position=center
 ```
 
 ## API Response
