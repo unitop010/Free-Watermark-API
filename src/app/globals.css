@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .bg-primary {
+    background-color: #166fb0;
+  }
+
+  .bg-secondary {
+    background-color: #12598b;
+  }
+}

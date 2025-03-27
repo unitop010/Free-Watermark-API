@@ -75,21 +75,21 @@ export async function GET(request: NextRequest) {
         top = 0;
         break;
       case 'top-right':
-        left = mainWidth! - mainWidth!;
+        left = mainWidth! - markWidth;
         top = 0;
         break;
       case 'bottom-left':
         left = 0;
-        top = mainHeight! - mainHeight!;
+        top = mainHeight! - markHeight;
         break;
       case 'bottom-right':
-        left = mainWidth! - mainWidth!;
-        top = mainHeight! - mainHeight!;
+        left = mainWidth! - markWidth;
+        top = mainHeight! - markHeight;
         break;
       case 'center':
       default:
-        left = Math.round((mainWidth! - mainWidth!) / 2);
-        top = Math.round((mainHeight! - mainHeight!) / 2);
+        left = Math.round((mainWidth! - markWidth) / 2);
+        top = Math.round((mainHeight! - markHeight) / 2);
     }
 
     // Composite the images
