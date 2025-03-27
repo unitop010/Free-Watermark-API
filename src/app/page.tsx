@@ -210,11 +210,11 @@ export default function Home() {
           </div>
 
           {/* Result Preview */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 lg:p-8 flex flex-col">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Preview</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6 lg:p-8 flex flex-col">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">Preview</h2>
             {resultUrl ? (
               <div className="flex-1 flex flex-col">
-                <div className="flex-1 relative aspect-square w-full rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+                <div className="relative w-full rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700" style={{ aspectRatio: '1/1', minHeight: '300px' }}>
                   <Image
                     src={resultUrl}
                     alt="Watermarked image"
@@ -222,11 +222,11 @@ export default function Home() {
                     className="object-contain"
                   />
                 </div>
-                <div className="flex justify-center space-x-4 mt-6">
+                <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 mt-4 sm:mt-6">
                   <a
                     href={resultUrl}
                     download="watermarked-image.jpg"
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-primary hover:bg-secondary dark:bg-primary-dark dark:hover:bg-secondary-dark transition-colors"
+                    className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-primary hover:bg-secondary dark:bg-primary-dark dark:hover:bg-secondary-dark transition-colors"
                   >
                     Download Image
                   </a>
@@ -241,15 +241,15 @@ export default function Home() {
                       navigator.clipboard.writeText(apiUrl);
                       showToast('API URL copied to clipboard!');
                     }}
-                    className="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-lg text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
+                    className="inline-flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-lg text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
                   >
                     Copy API URL
                   </button>
                 </div>
               </div>
             ) : (
-              <div className="flex-1 flex items-center justify-center bg-gray-50 dark:bg-gray-700/50 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
-                <p className="text-gray-500 dark:text-gray-400">Your watermarked image will appear here</p>
+              <div className="flex-1 flex items-center justify-center bg-gray-50 dark:bg-gray-700/50 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600" style={{ minHeight: '300px' }}>
+                <p className="text-gray-500 dark:text-gray-400 text-center px-4">Your watermarked image will appear here</p>
               </div>
             )}
           </div>
