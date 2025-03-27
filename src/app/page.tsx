@@ -57,22 +57,22 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+      {/* Fixed Theme Switcher */}
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeSwitcher />
+      </div>
+
       {/* Hero Section */}
       <div className="bg-white dark:bg-gray-800 border-b dark:border-gray-700">
         <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-8">
-            <div className="text-center flex-1">
-              <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
-                <span className="block">Image Watermark Generator</span>
-                <span className="block text-primary dark:text-primary-light mt-3">Protect Your Images</span>
-              </h1>
-              <p className="mt-3 max-w-md mx-auto text-base text-gray-500 dark:text-gray-400 sm:text-lg md:mt-5 md:text-xl md:max-w-6xl">
-                Add professional watermarks to your images with customizable size and position. Fast, easy, and secure.
-              </p>
-            </div>
-            <div className="ml-4">
-              <ThemeSwitcher />
-            </div>
+          <div className="text-center">
+            <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
+              <span className="block">Image Watermark Generator</span>
+              <span className="block text-primary dark:text-primary-light mt-3">Protect Your Images</span>
+            </h1>
+            <p className="mt-3 max-w-md mx-auto text-base text-gray-500 dark:text-gray-400 sm:text-lg md:mt-5 md:text-xl md:max-w-6xl">
+              Add professional watermarks to your images with customizable size and position. Fast, easy, and secure.
+            </p>
           </div>
         </div>
       </div>
