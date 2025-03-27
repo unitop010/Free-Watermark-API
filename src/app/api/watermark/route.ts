@@ -88,9 +88,14 @@ export async function GET(request: NextRequest) {
         break;
       case 'center':
       default:
+        // Calculate center position by subtracting half of the watermark dimensions
         left = Math.round((mainWidth! - markWidth) / 2);
         top = Math.round((mainHeight! - markHeight) / 2);
     }
+
+    // Ensure watermark stays within bounds
+    left = Math.max(0, Math.min(left, mainWidth! - markWidth));
+    top = Math.max(0, Math.min(top, mainHeight! - markHeight));
 
     // Composite the images
     const watermarkedImage = await finalMainImage
