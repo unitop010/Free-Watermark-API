@@ -1,7 +1,5 @@
 # Image Watermark Generator API
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/6ebb71f1-ecad-46d0-a07c-c6f10febf4b1/deploy-status)](https://app.netlify.com/sites/free-watermark/deploys)
-
 A powerful and easy-to-use API for adding professional watermarks to images. Built with Next.js and Sharp, this API allows you to customize watermark size, position, and more.
 
 ## 🌟 Features
