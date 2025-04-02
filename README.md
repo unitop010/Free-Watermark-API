@@ -56,7 +56,7 @@ The API returns the watermarked image directly with the following headers:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/watermark-api.git
+   git clone https://github.com/unitop010/watermark-api.git
    cd watermark-api
    ```
 
